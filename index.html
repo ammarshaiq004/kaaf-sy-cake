@@ -127,6 +127,33 @@
     transform: translateY(-1px);
   }
 
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .whatsapp-fab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #25D366;
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 6px 14px -6px rgba(37, 211, 102, 0.6);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .whatsapp-fab svg { width: 20px; height: 20px; }
+
+  .whatsapp-fab:hover {
+    transform: translateY(-2px) scale(1.06);
+    box-shadow: 0 10px 22px -8px rgba(37, 211, 102, 0.85);
+  }
+
   .menu-toggle {
     display: none;
     flex-direction: column;
@@ -730,6 +757,23 @@
     box-shadow: 0 12px 24px -10px rgba(0,0,0,0.3);
   }
 
+  .cta .btn-outline {
+    border-color: rgba(247, 239, 227, 0.5);
+    color: var(--cream-soft);
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta .btn-outline:hover {
+    background: rgba(247, 239, 227, 0.12);
+    border-color: var(--cream-soft);
+    color: var(--cream-soft);
+  }
+
+  .cta .hero-buttons {
+    margin-top: 4px;
+  }
+
   .candle-btn {
     background: none;
     border: none;
@@ -812,6 +856,22 @@
     transform: translateY(0);
   }
 
+  /* ---------- ICING DIVIDER ---------- */
+  .icing-divider {
+    height: 30px;
+    width: 100%;
+    background-repeat: repeat-x;
+    background-position: 0 0;
+    background-size: 34px 30px;
+    background-image: radial-gradient(circle at 50% 0, var(--dip-color) 15px, transparent 15.5px);
+    background-color: var(--base-color);
+    animation: icingDrift 26s linear infinite;
+  }
+
+  @keyframes icingDrift {
+    to { background-position-x: 34px; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .reveal { opacity: 1; transform: none; transition: none; }
@@ -820,6 +880,7 @@
     .offer-card:hover .offer-icon::after { animation: none; opacity: 0; }
     .sprinkle-canvas { display: none; }
     .pin-ring, .pin-emoji, .candle-btn { animation: none; }
+    .icing-divider { animation: none; }
   }
 
   /* ---------- RESPONSIVE ---------- */
@@ -857,7 +918,12 @@
       <a href="#order">How to Order</a>
       <a href="#contact">Contact</a>
     </div>
-    <a class="nav-cta" href="https://www.instagram.com/kaafsycake" target="_blank" rel="noopener">DM to Order</a>
+    <div class="nav-actions">
+      <a class="nav-cta" href="https://www.instagram.com/kaafsycake" target="_blank" rel="noopener">DM to Order</a>
+      <a class="whatsapp-fab" href="https://wa.me/923070498478" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2c-5.514 0-9.997 4.483-9.997 9.997 0 1.762.462 3.482 1.34 4.997L2 22l5.126-1.345a9.958 9.958 0 0 0 4.878 1.243h.004c5.514 0 9.996-4.483 9.996-9.997C22 6.483 17.518 2 12.004 2zm0 18.187h-.003a8.19 8.19 0 0 1-4.171-1.14l-.299-.178-3.043.798.812-2.968-.195-.305a8.176 8.176 0 0 1-1.257-4.397c0-4.522 3.68-8.201 8.204-8.201 2.19 0 4.249.854 5.798 2.404a8.146 8.146 0 0 1 2.4 5.802c0 4.523-3.68 8.185-8.246 8.185z"/></svg>
+      </a>
+    </div>
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
@@ -879,6 +945,8 @@
     </div>
   </div>
 </section>
+
+<div class="icing-divider" style="--dip-color: var(--cream); --base-color: var(--white);"></div>
 
 <section class="section about" id="about">
   <div class="container about-grid">
@@ -907,6 +975,8 @@
   </div>
 </section>
 
+<div class="icing-divider" style="--dip-color: var(--white); --base-color: var(--cream);"></div>
+
 <section class="section offerings" id="menu">
   <div class="container">
     <div class="section-head reveal">
@@ -933,6 +1003,8 @@
     </div>
   </div>
 </section>
+
+<div class="icing-divider" style="--dip-color: var(--cream); --base-color: var(--white);"></div>
 
 <section class="section process" id="order">
   <div class="container">
@@ -966,6 +1038,8 @@
   </div>
 </section>
 
+<div class="icing-divider" style="--dip-color: var(--white); --base-color: var(--cream);"></div>
+
 <section class="section gallery">
   <div class="container">
     <div class="insta-frame reveal">
@@ -984,16 +1058,23 @@
   </div>
 </section>
 
+<div class="icing-divider" style="--dip-color: var(--cream); --base-color: var(--brown-deep);"></div>
+
 <section class="cta" id="contact">
   <canvas class="sprinkle-canvas" id="ctaSprinkles" aria-hidden="true"></canvas>
   <div class="container">
     <button class="candle-btn" id="candleBtn" type="button" aria-label="Blow the candle for a surprise">🕯️</button>
     <span class="candle-hint">psst — blow the candle 👆</span>
     <h2>Ready to order your cake?</h2>
-    <p>Send us a DM on Instagram with your occasion, and let's create something sweet together.</p>
-    <a class="btn btn-primary" href="https://www.instagram.com/kaafsycake" target="_blank" rel="noopener">DM to Order 📩</a>
+    <p>Send us a DM on Instagram or a message on WhatsApp with your occasion, and let's create something sweet together.</p>
+    <div class="hero-buttons">
+      <a class="btn btn-primary" href="https://www.instagram.com/kaafsycake" target="_blank" rel="noopener">DM to Order 📩</a>
+      <a class="btn btn-outline" href="https://wa.me/923070498478" target="_blank" rel="noopener">WhatsApp Us 💬</a>
+    </div>
   </div>
 </section>
+
+<div class="icing-divider" style="--dip-color: rgba(200, 155, 92, 0.5); --base-color: var(--ink);"></div>
 
 <footer>
   <div class="foot-brand">Kaaf Sy Cake</div>
