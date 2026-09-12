@@ -1,5 +1,5 @@
-<title>Kaaf Sy Cake</title>
-<meta name="description" content="Kaaf Sy Cake — homemade cakes and custom creations, made with love and baked for your sweetest moments. DM to order.">
+<title>Kaaf Sy Cake | Home Bakery in Lahore</title>
+<meta name="description" content="Kaaf Sy Cake — homemade cakes and custom creations in Lahore, made with love and baked for your sweetest moments. DM to order.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Marcellus&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -300,6 +300,43 @@
   @keyframes twinkle {
     0%, 100% { transform: scale(1); opacity: 0.55; }
     50% { transform: scale(1.4) rotate(20deg); opacity: 1; }
+  }
+
+  /* ---------- LOCATION PIN ---------- */
+  .pin-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+  }
+
+  .pin-ring {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: rgba(200, 155, 92, 0.4);
+    animation: pinRadar 2.4s ease-out infinite;
+  }
+
+  .pin-emoji {
+    position: relative;
+    z-index: 1;
+    font-size: 0.9rem;
+    display: inline-block;
+    animation: pinBounce 2.4s ease-in-out infinite;
+  }
+
+  @keyframes pinRadar {
+    0% { transform: scale(0.5); opacity: 0.8; }
+    100% { transform: scale(2.6); opacity: 0; }
+  }
+
+  @keyframes pinBounce {
+    0%, 50%, 100% { transform: translateY(0); }
+    25% { transform: translateY(-3px); }
   }
 
   /* ---------- SECTION HEADINGS ---------- */
@@ -693,6 +730,38 @@
     box-shadow: 0 12px 24px -10px rgba(0,0,0,0.3);
   }
 
+  .candle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2.4rem;
+    line-height: 1;
+    margin-bottom: 16px;
+    padding: 6px;
+    position: relative;
+    z-index: 1;
+    animation: flicker 2.6s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px rgba(255, 200, 120, 0.55));
+    transform-origin: bottom center;
+  }
+
+  .candle-btn:hover { filter: drop-shadow(0 0 14px rgba(255, 200, 120, 0.8)); }
+
+  .candle-hint {
+    display: block;
+    font-size: 0.78rem;
+    opacity: 0.75;
+    margin: -6px 0 26px;
+    position: relative;
+    z-index: 1;
+    font-weight: 300;
+  }
+
+  @keyframes flicker {
+    0%, 100% { transform: scale(1) rotate(-2deg); }
+    50% { transform: scale(1.08) rotate(2deg); }
+  }
+
   /* ---------- FOOTER ---------- */
   footer {
     background: var(--ink);
@@ -750,6 +819,7 @@
     .offer-card:hover .offer-icon::before,
     .offer-card:hover .offer-icon::after { animation: none; opacity: 0; }
     .sprinkle-canvas { display: none; }
+    .pin-ring, .pin-emoji, .candle-btn { animation: none; }
   }
 
   /* ---------- RESPONSIVE ---------- */
@@ -794,7 +864,7 @@
 <section class="hero">
   <canvas class="sprinkle-canvas" id="heroSprinkles" aria-hidden="true"></canvas>
   <div class="hero-inner">
-    <div class="hero-eyebrow">Home Bakery &nbsp;·&nbsp; Est. 2026</div>
+    <div class="hero-eyebrow"><span class="pin-wrap"><span class="pin-ring"></span><span class="pin-emoji">📍</span></span>&nbsp;Serving Lahore &nbsp;·&nbsp; Est. 2026</div>
     <h1>Made with love,<br><em>baked for your sweetest moments</em></h1>
     <p class="lead">Homemade cakes and custom creations, crafted by hand in small batches — every order is baked just for you.</p>
     <div class="hero-buttons">
@@ -823,11 +893,12 @@
       <span class="section-eyebrow">Our Story</span>
       <h3>A little home bakery,<br>baked with a lot of heart</h3>
       <p>Kaaf Sy Cake started with a simple idea — that celebrations deserve cakes made the way home baking should be: fresh, thoughtful, and personal. Every cake is prepared to order, never mass-produced, so what you get is made specifically for your moment.</p>
-      <p>From everyday treats to custom celebration cakes, we work closely with you on flavor, design, and size to bring your vision to life.</p>
+      <p>Based in Lahore, we work closely with you on flavor, design, and size to bring your vision to life — from everyday treats to custom celebration cakes.</p>
       <div class="about-tags">
         <span>🍰 Custom Cakes</span>
         <span>🤎 Homemade Quality</span>
         <span>✨ Made to Order</span>
+        <span>📍 Lahore Based</span>
       </div>
     </div>
   </div>
@@ -881,7 +952,7 @@
       <div class="step reveal">
         <div class="step-num">03</div>
         <h3>Confirm Your Order</h3>
-        <p>We'll confirm pricing, timeline, and pickup or delivery.</p>
+        <p>We'll confirm pricing, timeline, and pickup or delivery anywhere in Lahore.</p>
       </div>
       <div class="step reveal">
         <div class="step-num">04</div>
@@ -913,6 +984,8 @@
 <section class="cta" id="contact">
   <canvas class="sprinkle-canvas" id="ctaSprinkles" aria-hidden="true"></canvas>
   <div class="container">
+    <button class="candle-btn" id="candleBtn" type="button" aria-label="Blow the candle for a surprise">🕯️</button>
+    <span class="candle-hint">psst — blow the candle 👆</span>
     <h2>Ready to order your cake?</h2>
     <p>Send us a DM on Instagram with your occasion, and let's create something sweet together.</p>
     <a class="btn btn-primary" href="https://www.instagram.com/kaafsycake" target="_blank" rel="noopener">DM to Order 📩</a>
@@ -921,7 +994,7 @@
 
 <footer>
   <div class="foot-brand">Kaaf Sy Cake</div>
-  <div class="foot-tag">Homemade cakes · Custom creations · Made with love</div>
+  <div class="foot-tag">Homemade cakes · Custom creations · Made with love in Lahore</div>
   <div class="foot-links">
     <a href="https://www.instagram.com/kaafsycake" target="_blank" rel="noopener">Instagram</a>
     <a href="#about">About</a>
@@ -973,7 +1046,88 @@
       colors: ['#FBF6EE', '#C89B5C', '#E9C9A8'],
       count: 16
     });
+
+    var candleBtn = document.getElementById('candleBtn');
+    if (candleBtn) {
+      candleBtn.addEventListener('click', function () {
+        var rect = candleBtn.getBoundingClientRect();
+        burstConfetti(rect.left + rect.width / 2, rect.top + rect.height / 2);
+        candleBtn.textContent = '💨';
+        setTimeout(function () { candleBtn.textContent = '🕯️'; }, 900);
+      });
+    }
   });
+
+  function burstConfetti(x, y) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var canvas = document.createElement('canvas');
+    canvas.style.position = 'fixed';
+    canvas.style.left = '0';
+    canvas.style.top = '0';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.style.pointerEvents = 'none';
+    canvas.style.zIndex = '999';
+    document.body.appendChild(canvas);
+
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    var ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    var colors = ['#C89B5C', '#C97B6B', '#FBF6EE', '#A8583F', '#5C2A20'];
+    var particles = [];
+    for (var i = 0; i < 70; i++) {
+      var angle = Math.random() * Math.PI * 2;
+      var speed = 2 + Math.random() * 5;
+      particles.push({
+        x: x, y: y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed - 3,
+        len: 4 + Math.random() * 6,
+        w: 2 + Math.random() * 1.5,
+        rot: Math.random() * Math.PI * 2,
+        spin: (Math.random() - 0.5) * 0.3,
+        color: colors[(Math.random() * colors.length) | 0],
+        life: 1
+      });
+    }
+
+    var start = performance.now();
+    function frame(t) {
+      var elapsed = t - start;
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        p.vy += 0.07;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rot += p.spin;
+        p.life -= 0.011;
+        ctx.save();
+        ctx.globalAlpha = Math.max(p.life, 0);
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        if (ctx.roundRect) {
+          ctx.roundRect(-p.len / 2, -p.w / 2, p.len, p.w, p.w / 2);
+        } else {
+          ctx.arc(0, 0, p.w, 0, Math.PI * 2);
+        }
+        ctx.fill();
+        ctx.restore();
+      }
+      if (elapsed < 2200) {
+        requestAnimationFrame(frame);
+      } else {
+        document.body.removeChild(canvas);
+      }
+    }
+    requestAnimationFrame(frame);
+  }
 
   function initSprinkles(canvas, opts) {
     if (!canvas || !canvas.getContext) return;
