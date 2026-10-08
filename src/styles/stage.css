@@ -1,0 +1,125 @@
+/* The cake stage: a sunlit corner of the bakery with a wooden counter. Used by
+   the homepage hero and the studio preview. */
+@property --stage-light {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #fff1dc;
+}
+
+@property --stage-glow {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #f4c99a;
+}
+
+.stage {
+  container-type: size;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 70% at 28% 8%, var(--stage-light) 0%, transparent 62%),
+    radial-gradient(70% 50% at 82% 70%, color-mix(in srgb, var(--stage-glow) 55%, transparent) 0%, transparent 70%),
+    linear-gradient(180deg, #fbefdf 0%, #f2dec5 100%);
+  transition:
+    --stage-light 900ms var(--ease-in-out),
+    --stage-glow 900ms var(--ease-in-out);
+}
+
+/* Morning sun through a window: soft diagonal beams, no blur filters. */
+.stage__light {
+  position: absolute;
+  inset: -10% -20% var(--counter, 22cqh) -10%;
+  z-index: 0;
+  background: linear-gradient(
+    118deg,
+    transparent 18%,
+    rgb(255 255 255 / 0.42) 26%,
+    transparent 36%,
+    rgb(255 255 255 / 0.28) 44%,
+    transparent 54%,
+    rgb(255 255 255 / 0.2) 61%,
+    transparent 70%
+  );
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+.stage__counter {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--counter, 22cqh);
+  z-index: 0;
+  background:
+    linear-gradient(180deg, rgb(255 236 210 / 0.55) 0, rgb(255 236 210 / 0) 6px),
+    repeating-linear-gradient(178.6deg, rgb(70 36 18 / 0) 0 9px, rgb(70 36 18 / 0.07) 9px 10px, rgb(70 36 18 / 0) 10px 23px),
+    radial-gradient(140% 120% at 30% 0%, rgb(255 222 180 / 0.35), transparent 60%),
+    linear-gradient(180deg, var(--wood-1) 0%, var(--wood-2) 55%, var(--wood-3) 100%);
+  box-shadow: inset 0 1px 0 rgb(255 240 220 / 0.6);
+}
+
+.stage__cake {
+  position: absolute;
+  z-index: 1;
+  --size: min(var(--cake-scale, 100cqw), 100cqh);
+  left: 50%;
+  width: var(--size);
+  height: var(--size);
+  margin-left: calc(var(--size) / -2);
+  /* The renderer puts the board top at 81.3% of its height; sit it on the counter. */
+  bottom: calc(var(--counter, 22cqh) - var(--size) * 0.165);
+}
+
+.cake-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Studio teaser renderings */
+.cake-svg--sketch .coat-shade,
+.cake-svg--sketch .coat-texture,
+.cake-svg--sketch .coat-drips,
+.cake-svg--sketch ellipse[fill^='url'],
+.cake-svg--sketch .cake-fx {
+  display: none;
+}
+
+.cake-svg--sketch path,
+.cake-svg--sketch circle,
+.cake-svg--sketch ellipse,
+.cake-svg--sketch text {
+  fill: none !important;
+  stroke: var(--chocolate) !important;
+  stroke-width: 1.2px !important;
+  stroke-opacity: 0.75 !important;
+}
+
+.cake-svg--sketch .coat-side {
+  stroke-opacity: 0.16 !important;
+  stroke-width: 0.8px !important;
+}
+
+.cake-svg--sketch .coat-top {
+  stroke-dasharray: 5 4;
+  stroke-width: 1.6px !important;
+}
+
+.cake-svg--flat .coat-shade,
+.cake-svg--flat .coat-texture,
+.cake-svg--flat .cake-fx {
+  display: none;
+}
+
+.slice-svg {
+  width: 100%;
+  height: auto;
+}
+
+.treat-art {
+  width: 100%;
+  height: 100%;
+}

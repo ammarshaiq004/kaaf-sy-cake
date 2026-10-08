@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- include:head -->
+    <title>Our Cakes | Kaaf sy Cake</title>
+    <meta name="description" content="Customized cakes, bento cakes, chocolate fudge, buttercream and fondant cakes, baked to order in Lahore." />
+    <meta property="og:title" content="Our Cakes | Kaaf sy Cake" />
+  </head>
+  <body class="page-catalog">
+    <!-- include:header page="cakes" -->
+    <main id="main">
+      <section class="page-hero">
+        <div class="container page-hero__inner">
+          <span class="eyebrow">Our cakes</span>
+          <h1>Cakes for every celebration</h1>
+          <p class="lead">Every cake is baked to order and finished by hand. Choose a style to start from, then make it yours in the Cake Studio.</p>
+        </div>
+      </section>
+      <div class="catalog-bar">
+        <div class="container catalog-bar__inner">
+          <div class="chip-row" role="group" aria-label="Filter" data-filters></div>
+          <p class="catalog-count" data-count aria-live="polite"></p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="product-grid" data-products></div>
+        <aside class="crosslink" data-reveal>
+          <div>
+            <h2>Have something else in mind?</h2>
+            <p>Design your own cake step by step, or send us your idea on WhatsApp.</p>
+          </div>
+          <a class="btn btn-primary" href="/studio.html">Open the Cake Studio <span class="arrow" aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+      <dialog class="dialog" data-quickview-dialog></dialog>
+    </main>
+    <!-- include:footer -->
+    <!-- include:wa-fab -->
+    <script type="module" src="/src/pages/cakes.ts"></script>
+  </body>
+</html>

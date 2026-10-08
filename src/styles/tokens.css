@@ -1,0 +1,88 @@
+/* Kaaf sy Cake design tokens. Brand palette is fixed by the brief; everything
+   else is derived from it. Caramel and blush are decorative: they don't meet
+   text contrast on cream, so text uses the -ink variants. */
+:root {
+  /* Brand palette */
+  --chocolate: #633325;
+  --espresso: #351c16;
+  --cream: #fff5e8;
+  --beige: #ebd8c1;
+  --caramel: #c58d61;
+  --blush: #e9b8ab;
+
+  /* Derived */
+  --paper: #fffaf3;
+  --cream-deep: #f7e9d6;
+  --caramel-ink: #8a5530; /* caramel tuned for 4.5:1 on cream */
+  --blush-soft: #f6dcd4;
+  --ink: var(--espresso);
+  --ink-muted: #6a463a; /* 7:1 on cream */
+  --ink-subtle: #7d5a4d;
+  --line: rgb(99 51 37 / 0.14);
+  --line-strong: rgb(99 51 37 / 0.28);
+  --wood-1: #b98258;
+  --wood-2: #9c6943;
+  --wood-3: #7e5233;
+  --whatsapp: #15803d; /* white text passes WCAG AA (5:1) */
+  --focus: #8a5530;
+  --danger: #a3372b;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
+  --font-brand: 'Marcellus', 'Cormorant Garamond', Georgia, serif;
+  --font-script: 'Parisienne', 'Snell Roundhand', cursive;
+  --font-ui: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --step--1: clamp(0.8rem, 0.78rem + 0.1vw, 0.86rem);
+  --step-0: clamp(0.95rem, 0.92rem + 0.15vw, 1.02rem);
+  --step-1: clamp(1.1rem, 1.04rem + 0.3vw, 1.25rem);
+  --step-2: clamp(1.35rem, 1.2rem + 0.7vw, 1.75rem);
+  --step-3: clamp(1.75rem, 1.45rem + 1.4vw, 2.6rem);
+  --step-4: clamp(2.3rem, 1.7rem + 2.9vw, 4rem);
+  --step-5: clamp(2.7rem, 1.8rem + 4.2vw, 5.4rem);
+
+  /* Space */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-9: clamp(4.5rem, 3rem + 6vw, 8rem);
+  --gutter: clamp(1rem, 0.6rem + 2vw, 2.5rem);
+  --max: 1200px;
+
+  /* Shape */
+  --r-sm: 10px;
+  --r-md: 18px;
+  --r-lg: 28px;
+  --r-xl: 40px;
+  --r-pill: 999px;
+
+  /* Elevation: warm, soft, low */
+  --shadow-1: 0 1px 2px rgb(53 28 22 / 0.06), 0 4px 12px -6px rgb(53 28 22 / 0.12);
+  --shadow-2: 0 2px 4px rgb(53 28 22 / 0.05), 0 18px 40px -20px rgb(53 28 22 / 0.32);
+  --shadow-3: 0 30px 70px -30px rgb(53 28 22 / 0.45);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  --dur-1: 160ms;
+  --dur-2: 280ms;
+  --dur-3: 520ms;
+  --dur-4: 900ms;
+
+  --header-h: 72px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-1: 0ms;
+    --dur-2: 0ms;
+    --dur-3: 0ms;
+    --dur-4: 0ms;
+  }
+}

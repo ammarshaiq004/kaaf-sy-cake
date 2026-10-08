@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- include:head -->
+    <title>Cake Studio | Design Your Cake | Kaaf sy Cake</title>
+    <meta name="description" content="Design your custom cake step by step: occasion, shape, flavor, frosting, colours, decorations and message. Then send it to Kaaf sy Cake on WhatsApp." />
+    <meta property="og:title" content="Design your cake in the Kaaf sy Cake Studio" />
+  </head>
+  <body class="page-studio">
+    <!-- include:header page="studio" -->
+
+    <main id="main" class="studio" data-studio>
+      <h1 class="visually-hidden">Cake Studio: design your cake</h1>
+      <div class="studio__layout">
+        <section class="studio__preview" aria-label="Cake preview">
+          <div class="stage stage--studio" data-stage>
+            <div class="stage__light" aria-hidden="true"></div>
+            <div class="stage__motifs" data-motifs aria-hidden="true"></div>
+            <div class="stage__counter" aria-hidden="true"></div>
+            <div class="stage__cake" data-cake></div>
+            <figure class="preview-slice" data-slice hidden>
+              <div class="preview-slice__art" data-slice-art></div>
+              <figcaption data-slice-caption></figcaption>
+            </figure>
+            <p class="preview-note" data-preview-note hidden></p>
+            <span class="preview-badge">Concept preview</span>
+            <div class="preview-tools">
+              <button type="button" class="icon-btn" data-rotate="-1" aria-label="Turn the cake left">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.3-5.6M4 4v4h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </button>
+              <button type="button" class="icon-btn" data-rotate="1" aria-label="Turn the cake right">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v4h-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </button>
+            </div>
+            <p class="preview-hint" aria-hidden="true">Drag to turn</p>
+          </div>
+          <div class="preview-summary" data-summary-wrap>
+            <h2 class="visually-hidden">Your selections</h2>
+            <ul class="summary-chips" data-summary></ul>
+          </div>
+        </section>
+
+        <section class="studio__panel" aria-label="Customize your cake">
+          <div class="studio__progress">
+            <div class="studio__progress-row">
+              <p class="studio__count" aria-live="polite"><span data-step-label>Step 1 of 10</span></p>
+              <p class="studio__saved" data-saved hidden>Progress saved on this device</p>
+            </div>
+            <div class="progress-bar" aria-hidden="true"><span data-progress></span></div>
+            <nav aria-label="Studio steps">
+              <ol class="step-dots" data-step-dots></ol>
+            </nav>
+          </div>
+
+          <div class="studio__notice notice" data-resume-banner hidden role="status">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg>
+            <div><strong>Welcome back.</strong> We restored the design you started earlier. <button type="button" class="link-btn" data-start-fresh>Start a new design</button></div>
+          </div>
+          <div class="studio__notice notice notice--warn" data-change-notice hidden role="status"></div>
+
+          <form class="studio__form" data-form novalidate></form>
+
+          <div class="studio__nav" data-studio-nav>
+            <button type="button" class="btn btn-ghost" data-back>Back</button>
+            <p class="studio__error" data-error role="alert"></p>
+            <button type="button" class="btn btn-primary" data-next>Next</button>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- include:footer -->
+    <script type="module" src="/src/pages/studio.ts"></script>
+  </body>
+</html>
