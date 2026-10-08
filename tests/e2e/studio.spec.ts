@@ -9,7 +9,7 @@ async function next(page: Page) {
 }
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/studio.html');
+  await page.goto('studio.html');
   await page.evaluate(() => localStorage.clear());
   await page.reload();
 });
@@ -90,7 +90,7 @@ test('progress is restored after a reload', async ({ page }) => {
 });
 
 test('catalog links pre-fill the studio', async ({ page }) => {
-  await page.goto('/studio.html?frosting=fudge&flavor=chocolate-fudge');
+  await page.goto('studio.html?frosting=fudge&flavor=chocolate-fudge');
   await expect(page.locator('input[name="frosting"][value="fudge"]')).toBeChecked();
   await expect(page.locator('input[name="flavor"][value="chocolate-fudge"]')).toBeChecked();
 });
@@ -105,7 +105,7 @@ test('options are keyboard operable', async ({ page }) => {
 test('works with reduced motion', async ({ browser }) => {
   const ctx = await browser.newContext({ reducedMotion: 'reduce' });
   const page = await ctx.newPage();
-  await page.goto('/studio.html');
+  await page.goto('studio.html');
   await pick(page, 'occasion', 'birthday');
   await next(page);
   await pick(page, 'shape', 'heart');

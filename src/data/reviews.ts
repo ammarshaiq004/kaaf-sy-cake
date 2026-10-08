@@ -7,7 +7,7 @@ export interface Review {
   name: string;
   occasion?: string;
   text: string;
-  /** Optional photo of their cake, e.g. '/images/reviews/ayesha.webp'. */
+  /** Optional photo of their cake, e.g. 'images/reviews/ayesha.webp' (no leading slash). */
   photo?: string;
   date?: string;
 }

@@ -38,7 +38,9 @@ npm run check      # typecheck, lint, unit tests and build
 
 ## Deploying
 
-Run `npm run build` and upload the contents of `dist/` to any static host (Netlify, Vercel, Cloudflare Pages, GitHub Pages). There is no server code.
+The live site is on GitHub Pages at https://ammarshaiq004.github.io/kaaf-sy-cake/. `.github/workflows/pages.yml` builds the site and publishes `dist/` on every push to `master`. In the repository settings, **Pages > Build and deployment > Source** must be set to **GitHub Actions**; publishing straight from the branch serves the unbuilt source files.
+
+The build uses relative paths, so `dist/` also works as-is on any other static host (Netlify, Vercel, Cloudflare Pages) or a custom domain. Keep links and image paths relative (`cakes.html`, `images/...`), never starting with `/`; the `pages` Playwright project serves the build under `/kaaf-sy-cake/` to catch that.
 
 ## Where things live
 

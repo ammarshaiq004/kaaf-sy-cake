@@ -168,7 +168,7 @@ function initCollections(): void {
   grid.innerHTML = picks
     .map((id, i) => {
       const p = PRODUCTS.find((x) => x.id === id)!;
-      const href = `/${p.group}.html#${p.id}`;
+      const href = `${p.group}.html#${p.id}`;
       return `<a class="collection-card" href="${href}" data-reveal style="--reveal-i:${i}">
         <div class="collection-card__media product-media">${mediaHtml(p)}</div>
         <div class="collection-card__body"><h3>${escapeHtml(p.name)}</h3><p>${escapeHtml(p.summary)}</p></div>

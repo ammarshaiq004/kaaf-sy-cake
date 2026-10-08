@@ -13,11 +13,22 @@ export default defineConfig({
   projects: [
     { name: 'desktop', use: { ...devices['Desktop Chrome'], viewport: { width: 1366, height: 860 } } },
     { name: 'mobile', use: { ...devices['Pixel 7'] } },
+    // The same build served under GitHub Pages' project path.
+    { name: 'pages', use: { ...devices['Desktop Chrome'], baseURL: 'http://localhost:4175/kaaf-sy-cake/' } },
   ],
-  webServer: {
-    command: 'npx vite build && npx vite preview --port 4174 --strictPort',
-    port: 4174,
-    reuseExistingServer: !process.env.CI,
-    timeout: 120_000,
-  },
+  // Started in order: the first builds dist/, the second serves it under a sub-path.
+  webServer: [
+    {
+      command: 'npx vite build && npx vite preview --port 4174 --strictPort',
+      port: 4174,
+      reuseExistingServer: !process.env.CI,
+      timeout: 120_000,
+    },
+    {
+      command: 'npx vite preview --port 4175 --strictPort --base /kaaf-sy-cake/',
+      url: 'http://localhost:4175/kaaf-sy-cake/',
+      reuseExistingServer: !process.env.CI,
+      timeout: 60_000,
+    },
+  ],
 });

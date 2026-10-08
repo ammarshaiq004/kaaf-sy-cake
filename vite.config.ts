@@ -39,6 +39,11 @@ function htmlPartials(): Plugin {
 }
 
 export default defineConfig({
+  // Relative base so the same build works at a domain root and under
+  // GitHub Pages' /kaaf-sy-cake/ project path.
+  base: './',
+  // Multi-page site: unknown URLs should 404 rather than fall back to index.html.
+  appType: 'mpa',
   plugins: [htmlPartials()],
   build: {
     target: 'es2020',

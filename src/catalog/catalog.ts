@@ -15,7 +15,7 @@ function priceLine(p: Product): string {
 }
 
 function card(p: Product, i: number): string {
-  const studio = p.studio !== undefined ? `<a class="btn btn-primary btn-sm" href="/studio.html${p.studio ? `?${p.studio}` : ''}">Customize</a>` : '';
+  const studio = p.studio !== undefined ? `<a class="btn btn-primary btn-sm" href="studio.html${p.studio ? `?${p.studio}` : ''}">Customize</a>` : '';
   return `<article class="product-card" id="${p.id}" data-product="${p.id}" data-tags="${p.tags.join(' ')}" data-reveal style="--reveal-i:${i % 3}">
     <button type="button" class="product-card__open" data-quickview="${p.id}" aria-label="Quick view: ${e(p.name)}">
       <div class="product-media">${mediaHtml(p)}</div>
@@ -97,7 +97,7 @@ export function initCatalog(group: ProductGroup): void {
 
 function openQuickView(dialog: HTMLDialogElement, p: Product): void {
   const gallery = p.images.length > 1;
-  const studio = p.studio !== undefined ? `<a class="btn btn-primary btn-lg" href="/studio.html${p.studio ? `?${p.studio}` : ''}">Customize in the Cake Studio</a>` : '';
+  const studio = p.studio !== undefined ? `<a class="btn btn-primary btn-lg" href="studio.html${p.studio ? `?${p.studio}` : ''}">Customize in the Cake Studio</a>` : '';
   dialog.innerHTML = `<button type="button" class="dialog__close" data-close aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
   <div class="qv">
     <div class="qv__gallery">
