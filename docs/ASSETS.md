@@ -8,7 +8,7 @@ No real photos were in the repository, so cakes are drawn by the studio renderer
 
 | Photo | Where it goes | How to add it |
 | --- | --- | --- |
-| Product photos (2 to 5 per product) | Product cards and quick view on `/cakes.html` and `/treats.html` | Save as `public/images/products/<product-id>-1.webp`, `-2.webp`, … in **4:3**, about 1200×900, under 200 KB. Then list them in that product's `images` array in `src/data/products.ts`. The first photo becomes the card image; more than one turns on the quick-view gallery. |
+| Product photos (2 to 5 per product) | Product cards and quick view on `/cakes.html` and `/treats.html` | Save as `public/images/products/<product-id>-1.webp`, `-2.webp`, … in **4:3**, about 1200×900, under 200 KB. Then list them in that product's `images` array in `src/data/products.ts`, written without a leading slash (`images/products/bento-1.webp`) so they work on GitHub Pages. The first photo becomes the card image; more than one turns on the quick-view gallery. |
 | Review photos (optional) | `/reviews.html` | `public/images/reviews/<name>.webp`, 4:3. Set `photo` on the review in `src/data/reviews.ts`. |
 | Bakery or baker photo (optional) | `/story.html` | Ask and it can be added beside the story text. |
 
@@ -23,7 +23,7 @@ The official circular logo is in `public/images/brand/` (`logo-256.webp` for the
 Add real reviews, shared with the customer's permission, to `src/data/reviews.ts`:
 
 ```ts
-{ name: 'Ayesha', text: 'The bento cake was perfect!', occasion: 'Birthday', photo: '/images/reviews/ayesha.webp' }
+{ name: 'Ayesha', text: 'The bento cake was perfect!', occasion: 'Birthday', photo: 'images/reviews/ayesha.webp' }
 ```
 
 ## Prices

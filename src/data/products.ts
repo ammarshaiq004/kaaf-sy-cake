@@ -18,7 +18,7 @@ export interface Product {
   summary: string;
   details: string[];
   art: { type: 'cake'; preset: keyof typeof PRESETS } | { type: 'treat'; kind: TreatKind };
-  /** Real product photos, e.g. '/images/products/bento-1.webp'. */
+  /** Real product photos, e.g. 'images/products/bento-1.webp' (no leading slash). */
   images: string[];
   /** Query string that pre-fills the cake studio. */
   studio?: string;

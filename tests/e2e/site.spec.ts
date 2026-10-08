@@ -1,13 +1,13 @@
 import { expect, test } from '@playwright/test';
 
 const PAGES = [
-  { path: '/', title: /Kaaf sy Cake/, h1: 'Your Dream Cake, Beautifully Crafted.' },
-  { path: '/cakes.html', title: /Our Cakes/, h1: 'Cakes for every celebration' },
-  { path: '/studio.html', title: /Cake Studio/, h1: 'Cake Studio: design your cake' },
-  { path: '/treats.html', title: /Sweet Treats/, h1: 'Brownies, cupcakes & sweet treats' },
-  { path: '/story.html', title: /Our Story/, h1: 'A little home bakery, baked with a lot of heart' },
-  { path: '/reviews.html', title: /Reviews/, h1: 'Kind words from our customers' },
-  { path: '/contact.html', title: /Contact/, h1: "Let's talk cake" },
+  { path: './', title: /Kaaf sy Cake/, h1: 'Your Dream Cake, Beautifully Crafted.' },
+  { path: 'cakes.html', title: /Our Cakes/, h1: 'Cakes for every celebration' },
+  { path: 'studio.html', title: /Cake Studio/, h1: 'Cake Studio: design your cake' },
+  { path: 'treats.html', title: /Sweet Treats/, h1: 'Brownies, cupcakes & sweet treats' },
+  { path: 'story.html', title: /Our Story/, h1: 'A little home bakery, baked with a lot of heart' },
+  { path: 'reviews.html', title: /Reviews/, h1: 'Kind words from our customers' },
+  { path: 'contact.html', title: /Contact/, h1: "Let's talk cake" },
 ];
 
 for (const p of PAGES) {
@@ -25,6 +25,8 @@ for (const p of PAGES) {
     // The original circular logo is present in the header and footer.
     await expect(page.locator('.site-header .logo-badge')).toBeVisible();
     await expect(page.locator('.site-footer .logo-badge')).toBeVisible();
+    // The logo image actually loaded (catches wrong asset paths on subpath hosting).
+    await expect.poll(() => page.locator('.site-header .logo-badge').evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
     // No horizontal scrolling at any width.
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     expect(overflow).toBeLessThanOrEqual(0);
@@ -33,8 +35,11 @@ for (const p of PAGES) {
 }
 
 test('every internal link points at a real page', async ({ page, request }) => {
-  await page.goto('/');
-  const hrefs = await page.$$eval('a[href^="/"]', (as) => Array.from(new Set(as.map((a) => (a as HTMLAnchorElement).getAttribute('href')!.split('#')[0]!))));
+  await page.goto('./');
+  const hrefs = await page.$$eval('a[href]', (as) =>
+    Array.from(new Set(as.map((a) => (a as HTMLAnchorElement).href).filter((h) => h.startsWith(location.origin)).map((h) => h.split('#')[0]!))),
+  );
+  expect(hrefs.length).toBeGreaterThan(5);
   for (const href of hrefs) {
     const res = await request.get(href);
     expect(res.status(), href).toBe(200);
@@ -42,7 +47,7 @@ test('every internal link points at a real page', async ({ page, request }) => {
 });
 
 test('navigation marks the current page', async ({ page, isMobile }) => {
-  await page.goto('/cakes.html');
+  await page.goto('cakes.html');
   if (isMobile) {
     await page.getByRole('button', { name: 'Open menu' }).click();
     await expect(page.locator('#primary-nav')).toHaveClass(/is-open/);
@@ -53,14 +58,14 @@ test('navigation marks the current page', async ({ page, isMobile }) => {
 });
 
 test('WhatsApp links use the bakery number', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('./');
   const hrefs = await page.$$eval('a[href*="wa.me"]', (as) => as.map((a) => (a as HTMLAnchorElement).href));
   expect(hrefs.length).toBeGreaterThan(0);
   for (const h of hrefs) expect(h).toMatch(/^https:\/\/wa\.me\/923107666604/);
 });
 
 test('catalog filters and quick view work', async ({ page }) => {
-  await page.goto('/treats.html');
+  await page.goto('treats.html');
   await expect(page.locator('[data-product]')).toHaveCount(5);
   await page.getByRole('button', { name: 'Tea-time' }).click();
   await expect(page.locator('[data-product]:visible')).toHaveCount(3);
@@ -76,16 +81,16 @@ test('catalog filters and quick view work', async ({ page }) => {
 });
 
 test('no prices or testimonials are invented', async ({ page }) => {
-  for (const path of ['/cakes.html', '/treats.html', '/reviews.html']) {
+  for (const path of ['cakes.html', 'treats.html', 'reviews.html']) {
     await page.goto(path);
     await expect(page.locator('body')).not.toContainText(/Rs\.?\s?\d|PKR|★/);
   }
-  await page.goto('/reviews.html');
+  await page.goto('reviews.html');
   await expect(page.getByRole('heading', { name: 'Our first reviews are on their way' })).toBeVisible();
 });
 
 test('contact form opens WhatsApp with the inquiry', async ({ page }) => {
-  await page.goto('/contact.html');
+  await page.goto('contact.html');
   // Capture the URL instead of leaving the site.
   await page.evaluate(() => {
     (window as unknown as { opened: string[] }).opened = [];
