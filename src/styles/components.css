@@ -1,0 +1,814 @@
+/* ---------- Buttons ---------- */
+.btn {
+  --btn-bg: var(--chocolate);
+  --btn-fg: var(--cream);
+  --btn-border: transparent;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  min-height: 48px;
+  padding: 0.8em 1.6em;
+  border-radius: var(--r-pill);
+  border: 1.5px solid var(--btn-border);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  max-width: 100%;
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    transform var(--dur-2) var(--ease-out),
+    box-shadow var(--dur-2) var(--ease-out),
+    background-color var(--dur-2) var(--ease-out),
+    color var(--dur-2) var(--ease-out);
+}
+
+/* A soft light sweep on hover: the "polished CTA" interaction. */
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(110deg, transparent 30%, rgb(255 245 232 / 0.22) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 700ms var(--ease-out);
+}
+
+.btn:hover::after {
+  transform: translateX(120%);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px -14px rgb(53 28 22 / 0.55);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-primary {
+  --btn-bg: var(--chocolate);
+}
+
+.btn-primary:hover {
+  --btn-bg: var(--espresso);
+}
+
+.btn-ghost {
+  --btn-bg: transparent;
+  --btn-fg: var(--espresso);
+  --btn-border: var(--line-strong);
+}
+
+.btn-ghost:hover {
+  --btn-bg: rgb(99 51 37 / 0.06);
+  box-shadow: none;
+}
+
+.btn-light {
+  --btn-bg: var(--cream);
+  --btn-fg: var(--espresso);
+}
+
+.btn-whatsapp {
+  --btn-bg: var(--whatsapp);
+  --btn-fg: #fff;
+}
+
+.btn-whatsapp:hover {
+  --btn-bg: #116632;
+}
+
+.btn-sm {
+  min-height: 40px;
+  padding: 0.55em 1.2em;
+  font-size: 0.86rem;
+}
+
+.btn-lg {
+  min-height: 56px;
+  padding: 1em 2em;
+  font-size: 1rem;
+}
+
+.btn[disabled],
+.btn[aria-disabled='true'] {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.btn svg {
+  width: 1.15em;
+  height: 1.15em;
+  flex: none;
+}
+
+.btn .arrow {
+  transition: transform var(--dur-2) var(--ease-out);
+}
+
+.btn:hover .arrow {
+  transform: translateX(3px);
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  color: var(--chocolate);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--caramel);
+  text-underline-offset: 0.3em;
+}
+
+.text-link:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Inline text button */
+.link-btn {
+  border: 0;
+  background: none;
+  padding: 0.2rem;
+  color: var(--chocolate);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  text-decoration-color: var(--caramel);
+  justify-self: start;
+}
+
+.link-btn:hover {
+  text-decoration-color: currentColor;
+}
+
+/* ---------- Logo badge (the original circular Kaaf sy Cake logo) ----------
+   Reproduced exactly from the original site's About badge. Sizes are in em
+   so the whole mark scales from one variable without changing proportions. */
+.logo-badge {
+  --size: 280px;
+  flex: none;
+  width: var(--size);
+  height: var(--size);
+  font-size: calc(var(--size) / 17.5);
+  border-radius: 50%;
+  background: linear-gradient(160deg, #a8583f, #5c2a20);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1.875em 3.75em -1.25em rgb(92 42 32 / 0.45);
+  font-family: 'Poppins', sans-serif;
+  line-height: normal;
+  user-select: none;
+}
+
+.logo-badge__inner {
+  width: 14.625em;
+  height: 14.625em;
+  border-radius: 50%;
+  border: 0.0625em solid rgb(247 239 227 / 0.55);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fbf6ee;
+  padding: 1.25em;
+}
+
+.logo-badge__cap {
+  font-size: 0.65em;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin-bottom: 1em;
+}
+
+.logo-badge__name {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 2.1em;
+  line-height: 1.2;
+}
+
+.logo-badge__dots {
+  margin: 0.875em 0;
+  letter-spacing: 0.375em;
+  font-size: 0.6em;
+  opacity: 0.8;
+}
+
+.logo-badge__est {
+  font-size: 0.65em;
+  letter-spacing: 0.2em;
+  opacity: 0.8;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--header-h);
+  background: rgb(255 245 232 / 0.82);
+  backdrop-filter: saturate(1.2) blur(12px);
+  -webkit-backdrop-filter: saturate(1.2) blur(12px);
+  border-bottom: 1px solid transparent;
+  transition:
+    border-color var(--dur-3) var(--ease-out),
+    box-shadow var(--dur-3) var(--ease-out),
+    background-color var(--dur-3) var(--ease-out);
+}
+
+.site-header.is-scrolled {
+  border-color: var(--line);
+  background: rgb(255 245 232 / 0.94);
+  box-shadow: 0 10px 30px -24px rgb(53 28 22 / 0.4);
+}
+
+.header-inner {
+  width: min(100% - 2 * var(--gutter), 1320px);
+  height: 100%;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  margin-right: auto;
+  border-radius: var(--r-pill);
+}
+
+.brand .logo-badge {
+  --size: 46px;
+  box-shadow: 0 4px 10px -4px rgb(92 42 32 / 0.5);
+  transition: transform var(--dur-3) var(--ease-out);
+}
+
+.brand:hover .logo-badge {
+  transform: rotate(-8deg);
+}
+
+.brand-word {
+  font-family: var(--font-brand);
+  font-size: 1.2rem;
+  color: var(--espresso);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.primary-nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: clamp(0.6rem, 1.6vw, 1.8rem);
+}
+
+.primary-nav a {
+  position: relative;
+  display: inline-block;
+  padding: 0.5rem 0.1rem;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--espresso);
+  white-space: nowrap;
+}
+
+.primary-nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.2rem;
+  height: 1.5px;
+  background: var(--caramel);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-3) var(--ease-out);
+}
+
+.primary-nav a:hover::after,
+.primary-nav a[aria-current='page']::after {
+  transform: scaleX(1);
+}
+
+.primary-nav a[aria-current='page'] {
+  font-weight: 500;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.header-actions .btn[aria-current='page'] {
+  --btn-bg: var(--espresso);
+}
+
+.nav-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: transparent;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-toggle__bars {
+  position: relative;
+  width: 18px;
+  height: 12px;
+}
+
+.nav-toggle__bars span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: var(--espresso);
+  border-radius: 2px;
+  transition:
+    transform var(--dur-3) var(--ease-out),
+    opacity var(--dur-2) ease;
+}
+
+.nav-toggle__bars span:nth-child(1) {
+  top: 0;
+}
+
+.nav-toggle__bars span:nth-child(2) {
+  top: 5px;
+}
+
+.nav-toggle__bars span:nth-child(3) {
+  top: 10px;
+}
+
+.nav-toggle[aria-expanded='true'] .nav-toggle__bars span:nth-child(1) {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded='true'] .nav-toggle__bars span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded='true'] .nav-toggle__bars span:nth-child(3) {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+@media (max-width: 1060px) {
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .primary-nav {
+    position: fixed;
+    inset: var(--header-h) 0 auto 0;
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 30px 50px -30px rgb(53 28 22 / 0.4);
+    padding: var(--space-4) var(--gutter) var(--space-6);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition:
+      opacity var(--dur-3) var(--ease-out),
+      transform var(--dur-3) var(--ease-out),
+      visibility 0s linear var(--dur-3);
+    max-height: calc(100dvh - var(--header-h));
+    overflow-y: auto;
+  }
+
+  .primary-nav.is-open {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition-delay: 0s;
+  }
+
+  .primary-nav ul {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .primary-nav li + li {
+    border-top: 1px solid var(--line);
+  }
+
+  .primary-nav a {
+    display: block;
+    padding: 1rem 0;
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+  }
+
+  .primary-nav a::after {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .brand-word {
+    display: none;
+  }
+
+  .header-actions .btn {
+    padding-inline: 1rem;
+  }
+}
+
+/* ---------- Floating WhatsApp shortcut ---------- */
+.wa-fab {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  height: 52px;
+  padding: 0 1.1rem 0 0.9rem;
+  border-radius: var(--r-pill);
+  background: var(--whatsapp);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  box-shadow: 0 14px 30px -14px rgb(23 120 60 / 0.7);
+  transition:
+    transform var(--dur-3) var(--ease-out),
+    box-shadow var(--dur-3) var(--ease-out),
+    opacity var(--dur-3) var(--ease-out);
+}
+
+.wa-fab svg {
+  width: 24px;
+  height: 24px;
+}
+
+.wa-fab:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 34px -14px rgb(23 120 60 / 0.8);
+}
+
+.wa-fab.is-hidden {
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .wa-fab {
+    width: 52px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .wa-fab__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--espresso);
+  color: rgb(255 245 232 / 0.78);
+  padding: var(--space-8) 0 var(--space-6);
+  font-size: 0.92rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, 1fr);
+  gap: var(--space-7) var(--space-6);
+}
+
+.footer-brand {
+  display: grid;
+  gap: var(--space-4);
+  align-content: start;
+  justify-items: start;
+}
+
+.footer-brand .logo-badge {
+  --size: 120px;
+  box-shadow: 0 10px 30px -10px rgb(0 0 0 / 0.5);
+}
+
+.footer-tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--cream);
+  line-height: 1.2;
+}
+
+.site-footer h2 {
+  font-family: var(--font-ui);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--caramel);
+  margin-bottom: var(--space-4);
+}
+
+.site-footer ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.site-footer a {
+  text-decoration: none;
+  transition: color var(--dur-2) ease;
+}
+
+.site-footer a:hover {
+  color: var(--cream);
+  text-decoration: underline;
+}
+
+.site-footer :focus-visible {
+  outline-color: var(--caramel);
+}
+
+.footer-bottom {
+  margin-top: var(--space-7);
+  padding-top: var(--space-5);
+  border-top: 1px solid rgb(255 245 232 / 0.12);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-3);
+  font-size: 0.8rem;
+  color: rgb(255 245 232 / 0.6);
+}
+
+@media (max-width: 860px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 420px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Icing swirl divider (kept from the original site) ---------- */
+.icing-divider {
+  height: 28px;
+  background-repeat: repeat-x;
+  background-size: 34px 28px;
+  background-image: radial-gradient(circle at 50% 0, var(--dip) 15px, transparent 15.5px);
+  background-color: var(--base);
+}
+
+/* ---------- Chips ---------- */
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  min-height: 40px;
+  padding: 0.45em 1.05em;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line-strong);
+  background: var(--paper);
+  color: var(--espresso);
+  font-size: 0.86rem;
+  transition:
+    background-color var(--dur-2) ease,
+    border-color var(--dur-2) ease,
+    color var(--dur-2) ease;
+}
+
+.chip:hover {
+  border-color: var(--chocolate);
+}
+
+.chip[aria-pressed='true'] {
+  background: var(--espresso);
+  border-color: var(--espresso);
+  color: var(--cream);
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.2em 0.75em;
+  border-radius: var(--r-pill);
+  background: var(--cream-deep);
+  color: var(--ink-muted);
+  font-size: 0.74rem;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Forms ---------- */
+.field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.field label,
+.field .label {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--espresso);
+}
+
+.field .hint {
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  background: var(--paper);
+  color: var(--espresso);
+  transition:
+    border-color var(--dur-2) ease,
+    box-shadow var(--dur-2) ease;
+}
+
+.textarea {
+  min-height: 110px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  outline: none;
+  border-color: var(--chocolate);
+  box-shadow: 0 0 0 3px rgb(197 141 97 / 0.3);
+}
+
+.input[aria-invalid='true'],
+.textarea[aria-invalid='true'] {
+  border-color: var(--danger);
+}
+
+.field-error {
+  font-size: 0.82rem;
+  color: var(--danger);
+}
+
+.field-error:empty {
+  display: none;
+}
+
+/* ---------- Notice ---------- */
+.notice {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 0.9rem 1.1rem;
+  border-radius: var(--r-md);
+  background: var(--cream-deep);
+  border: 1px solid var(--line);
+  color: var(--ink-muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.notice strong {
+  color: var(--espresso);
+}
+
+.notice svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  color: var(--caramel-ink);
+}
+
+/* ---------- Inner page hero ---------- */
+.page-hero {
+  position: relative;
+  padding: clamp(3rem, 2rem + 5vw, 6.5rem) 0 clamp(2.5rem, 2rem + 3vw, 4.5rem);
+  overflow: hidden;
+}
+
+.page-hero h1 {
+  font-size: var(--step-5);
+  max-width: 14ch;
+}
+
+.page-hero .lead {
+  max-width: 52ch;
+  margin-top: var(--space-4);
+}
+
+.page-hero__inner {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.botanical {
+  position: absolute;
+  pointer-events: none;
+  color: var(--caramel);
+  opacity: 0.45;
+}
+
+/* ---------- Dialog ---------- */
+.dialog {
+  width: min(100% - 24px, 980px);
+  max-height: min(92dvh, 860px);
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-lg);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: var(--shadow-3);
+  overflow: hidden;
+}
+
+.dialog::backdrop {
+  background: rgb(53 28 22 / 0.45);
+  backdrop-filter: blur(3px);
+}
+
+.dialog[open] {
+  animation: dialog-in var(--dur-3) var(--ease-out);
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+}
+
+.dialog__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 0;
+  background: rgb(255 250 243 / 0.9);
+  box-shadow: var(--shadow-1);
+  display: grid;
+  place-items: center;
+}
+
+.dialog__close svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Very narrow phones: let long button labels wrap instead of overflowing. */
+@media (max-width: 400px) {
+  .btn {
+    white-space: normal;
+    text-align: center;
+    padding-inline: 1.2em;
+  }
+}

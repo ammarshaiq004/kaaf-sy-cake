@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "kaaf-sy-cake-site",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["-y", "serve", "-l", "4174", "."],
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
       "port": 4174
     }
   ]
