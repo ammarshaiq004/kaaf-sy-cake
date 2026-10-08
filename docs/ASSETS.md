@@ -16,7 +16,7 @@ Product ids: `customized`, `bento`, `chocolate-fudge`, `buttercream`, `fondant`,
 
 ## Logo
 
-The original circular Kaaf sy Cake badge was built in CSS on the old site, and it is kept exactly as it was (`.logo-badge` in `src/styles/components.css`, markup in `src/partials/logo.html`). If there is an official logo file (SVG or a large PNG), send it and it can replace the CSS version everywhere without any change in look.
+The official circular logo is in `public/images/brand/` (`logo-256.webp` for the header and footer, `logo-640.webp` for the story page), cut from the supplied file with a transparent background. The favicon and home-screen icon (`public/favicon-48.png`, `public/apple-touch-icon.png`) come from the same file. A vector (SVG) version would make it sharper on very large screens, if one exists.
 
 ## Reviews
 

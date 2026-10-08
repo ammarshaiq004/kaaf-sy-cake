@@ -151,67 +151,17 @@
   text-decoration-color: currentColor;
 }
 
-/* ---------- Logo badge (the original circular Kaaf sy Cake logo) ----------
-   Reproduced exactly from the original site's About badge. Sizes are in em
-   so the whole mark scales from one variable without changing proportions. */
+/* ---------- Logo (the original Kaaf sy Cake circular logo file) ---------- */
 .logo-badge {
   --size: 280px;
+  display: block;
   flex: none;
   width: var(--size);
   height: var(--size);
-  font-size: calc(var(--size) / 17.5);
   border-radius: 50%;
-  background: linear-gradient(160deg, #a8583f, #5c2a20);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 1.875em 3.75em -1.25em rgb(92 42 32 / 0.45);
-  font-family: 'Poppins', sans-serif;
-  line-height: normal;
+  box-shadow: 0 calc(var(--size) * 0.107) calc(var(--size) * 0.214) calc(var(--size) * -0.071) rgb(92 42 32 / 0.45);
   user-select: none;
-}
-
-.logo-badge__inner {
-  width: 14.625em;
-  height: 14.625em;
-  border-radius: 50%;
-  border: 0.0625em solid rgb(247 239 227 / 0.55);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #fbf6ee;
-  padding: 1.25em;
-}
-
-.logo-badge__cap {
-  font-size: 0.65em;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  opacity: 0.85;
-  margin-bottom: 1em;
-}
-
-.logo-badge__name {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-weight: 500;
-  font-size: 2.1em;
-  line-height: 1.2;
-}
-
-.logo-badge__dots {
-  margin: 0.875em 0;
-  letter-spacing: 0.375em;
-  font-size: 0.6em;
-  opacity: 0.8;
-}
-
-.logo-badge__est {
-  font-size: 0.65em;
-  letter-spacing: 0.2em;
-  opacity: 0.8;
+  -webkit-user-drag: none;
 }
 
 /* ---------- Header ---------- */
@@ -255,7 +205,7 @@
 }
 
 .brand .logo-badge {
-  --size: 46px;
+  --size: 54px;
   box-shadow: 0 4px 10px -4px rgb(92 42 32 / 0.5);
   transition: transform var(--dur-3) var(--ease-out);
 }
